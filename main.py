@@ -18,10 +18,7 @@ def main():
     """Creating .json file with data"""
     result_dict = create_dict(pk=1)
 
-    list_of_objects = []
-    for i in range(100):
-        dict_of_objects = {key: value for key, value in next(result_dict).items()}
-        list_of_objects.append(dict_of_objects)
+    list_of_objects = [next(result_dict) for _ in range(100)]
 
     with open(FILE_NAME_WRITING, 'w', encoding='utf-8') as f:
         json.dump(list_of_objects, f, ensure_ascii=False, indent=4)
